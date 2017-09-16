@@ -1,0 +1,158 @@
+$boxSize: border-box;
+$noRepeat: no-repeat;
+$ease: ease-in-out;
+$transition: opacity 1s $ease;
+$hunderedPer: 100%;
+$hidden: hidden;
+$rel: relative;
+$rght: right;
+$none: none;
+$msFilter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+$block: block;
+$center: center;
+$transitionLinear: all .5s linear;
+$absolute: absolute;
+
+input[type=text]{
+    width: 200px;
+    box-sizing: $boxSize;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: $noRepeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s $ease;
+    transition: width 0.4s $ease;
+
+&:focus {
+    width: $hunderedPer;
+}
+}
+
+.imageGridItem {
+    display: inline-block;
+    box-sizing: $boxSize;
+    padding: 10px;
+    overflow: $hidden;
+    position: $rel;
+    transition: $transitionLinear;
+    transition-delay: .1s;
+    
+&:hover{
+    a{
+        display: $block;
+    }
+    .imageWrapper{
+        background-position: $rght;
+    }
+    background-position: $rght;
+}
+
+a{
+    display: $none;
+    font-size: $hunderedPer;
+    color: #ffffff !important;
+    text-align: $center;
+    margin: auto;
+    position: $absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+    text-decoration: $none;
+}
+
+&:focus a {
+    display: $block;
+}
+}
+
+.imageGridItem:hover .imageWrapper:before, .imageGridItem:focus .imageWrapper:before {
+    display: $block;
+}
+
+.imageWrapper {
+    position: $rel;
+    width: $hunderedPer;
+    padding-bottom: $hunderedPer;
+    background-size: cover;
+    background-position: $center $center;
+    background-repeat: $noRepeat;
+    transition: $transitionLinear;
+
+    cursor: pointer;
+    box-shadow:0 10px 6px -6px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+
+&:before {
+    content: "";
+    display: $none;
+    height: $hunderedPer;
+    width: $hunderedPer;
+    position: $absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(29, 38, 41, 0.65);
+}
+}
+
+.lightbox {
+    /** Default lightbox to hidden */
+    /*display: block;*/
+    opacity: 1;
+    /** Position and style */
+    position: fixed;
+    z-index: 999;
+    width: $hunderedPer;
+    height: $hunderedPer;
+    text-align: $center;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.88);
+    visibility: visible;
+    /*transition: visibility .3s, opacity .3s linear;*/
+    transition: all .5s ;
+
+    & img {
+    /** Pad the lightbox image */
+    max-width: $hunderedPer;
+    max-height: $hunderedPer;
+    position: $absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    /*padding: 10px;*/
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+    opacity:0;
+    -ms-filter: $msFilter;
+    filter: alpha(opacity=0);
+    pointer-events:$none;
+
+    &:global(.opaque) {
+        opacity:1;
+        -ms-filter:$msFilter;
+        filter: alpha(opacity=1);
+        pointer-events: auto;
+    
+    }
+
+    }
+}
+
+.hide {
+     /*display:none;*/
+     opacity: 0;
+    visibility: $hidden;
+    transition: visibility .3s, opacity .3s linear;
+    /*transition: all .5s;*/
+
+}
