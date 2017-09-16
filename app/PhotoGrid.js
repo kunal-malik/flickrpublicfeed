@@ -1,6 +1,6 @@
 import React from "react";
-import styles from './PhotoGrid.css'
 import {Label, Thumbnail} from 'react-bootstrap';
+import styles from './scss/style.scss';
 
 /** This component displays results fetched from the public feed */
 export class PhotoGrid extends React.Component {

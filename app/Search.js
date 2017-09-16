@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
-import './Search.css'
 import { Well } from 'react-bootstrap'
+require('./scss/style.scss');
 
 /** This component displays the search box for user to enter their keywords*/
 export class Search extends React.Component {
